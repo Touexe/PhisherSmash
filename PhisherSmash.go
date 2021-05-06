@@ -56,8 +56,9 @@ func makeResp(credential credential, n *sync.WaitGroup, rc chan Resp, requestDon
 			return http.ErrUseLastResponse
 		},
 	}
+	// Headers
 	req.Header.Set("User-Agent", RandomString(userAgents))
-	req.Header.Set("username", credential.username)
+	req.Header.Set("username", credential.username) 
 	req.Header.Set("password", credential.password)
 	res, err := client.Do(req)
 	r := Resp{res, err}
